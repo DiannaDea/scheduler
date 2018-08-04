@@ -1,0 +1,3 @@
+Logout
+curl -i -H "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjY1NmZmZmUxZmM0OTdjYzBmZGQ3NmUiLCJlbWFpbCI6ImRpZmFuN2NhLmRpYW5hQGRpYW5hLmNvbSIsInVzZXJuYW1lIjoiRGlhbmEiLCJpYXQiOjE1MzMzNzY0NzIsImV4cCI6MTUzMzM5ODA3Mn0.bkQpVnek-Zdn1yzy1hGSwyWC7g8-qZjQcFwMaVGfcy8" -X POST http://localhost:5000/auth/logout
+

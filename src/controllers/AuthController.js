@@ -2,6 +2,7 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import pick from 'lodash.pick';
 
 import User from '../models/User';
 import devConfig from '../config';
@@ -51,13 +52,13 @@ export default class AuthController {
 
                 return req.login(user, { session: false }, (err) => {
                     const token = jwt.sign(
-                        JSON.parse(JSON.stringify(user)),
+                        pick(user, ['_id', 'email', 'username']),
                         SECRET, {
                             expiresIn: EXPIRES_IN
                         }
                     );
 
-                    return res.status(200).json({ user, token });
+                    return res.status(200).json({ token });
                 });
             })(req, res);
         } catch (error) {

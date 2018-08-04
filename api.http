@@ -4,7 +4,7 @@ POST http://localhost:5000/auth/signup
 Content-Type: application/json
 
 {
-  "email": "difan7ca.diana@diana.com",
+  "email": "difan7ca.dianha@diana.com",
   "password": "qwerty123",
   "username" : "Diana"
 }
@@ -15,7 +15,7 @@ POST http://localhost:5000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "diana.diana@diana.com",
+  "email": "difan7ca.diana@diana.com",
   "password": "qwerty123",
   "username" : "Diana"
 }
@@ -23,7 +23,6 @@ Content-Type: application/json
 ### Logout
 
 POST http://localhost:5000/auth/logout
-Content-Type: application/json
-
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjY1NmZmZmUxZmM0OTdjYzBmZGQ3NmUiLCJlbWFpbCI6ImRpZmFuN2NhLmRpYW5hQGRpYW5hLmNvbSIsInVzZXJuYW1lIjoiRGlhbmEiLCJpYXQiOjE1MzMzNzY3MTAsImV4cCI6MTUzMzM5ODMxMH0.Q2ELsjpNg1O_I3r9hBGgm6VPE32HujcQBmp9xFqNsQg
 ###
 

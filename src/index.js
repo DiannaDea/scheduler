@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import connectToDb from './services/dbConnection';
 
 import authRouter from './routes/auth';
+import eventRouter from './routes/event';
 
 const cookieParser = require('cookie-parser');
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 // router
 
 app.use('/auth', authRouter);
+app.use('/events', eventRouter);
 
 // final error handlers
 
