@@ -1,14 +1,16 @@
 import React from 'react';
 
 import {Switch, Route} from 'react-router-dom';
-import Header from './Header';
+import Header from '../containers/Header';
 import Main from './Main';
+import Login from '../containers/Login';
 
 
 const Body = () => (
     <React.Fragment>
         <Switch>
             <Route exact path="/" component={Main}/>
+            <Route path="/signin" component={Login}/>
         </Switch>
     </React.Fragment>
 );
