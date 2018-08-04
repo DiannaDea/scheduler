@@ -1,0 +1,29 @@
+### Create user
+
+POST http://localhost:5000/auth/signup
+Content-Type: application/json
+
+{
+  "email": "difan7ca.diana@diana.com",
+  "password": "qwerty123",
+  "username" : "Diana"
+}
+
+### Login
+
+POST http://localhost:5000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "diana.diana@diana.com",
+  "password": "qwerty123",
+  "username" : "Diana"
+}
+
+### Logout
+
+POST http://localhost:5000/auth/logout
+Content-Type: application/json
+
+###
+
