@@ -1,3 +1,5 @@
+import { celebrate, Joi } from 'celebrate';
+
 import Event from '../models/Event';
 import User from '../models/User';
 
@@ -102,5 +104,26 @@ export default class EventController {
                 message: error.message
             });
         }
+    }
+
+    static addValidation() {
+        return celebrate({
+            body: Joi.object().keys({
+                title: Joi.string().min(3).max(30).required(),
+                start: Joi.number().integer().min(0).max(480)
+                    .required(),
+                duration: Joi.number().integer().min(1).max(480)
+                    .required(),
+                owner: [Joi.string(), Joi.number()]
+            })
+        });
+    }
+
+    static retrieveValidation() {
+        return celebrate({
+            params: Joi.object().keys({
+                id: [Joi.string(), Joi.number()]
+            })
+        });
     }
 }

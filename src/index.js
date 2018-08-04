@@ -1,17 +1,19 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+
+import * as passport from './services/passport';
+
+import { errors } from 'celebrate';
 
 import connectToDb from './services/dbConnection';
 
 import authRouter from './routes/auth';
 import eventRouter from './routes/event';
 
-const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 5000;
-
-require('./services/passport');
 
 const app = express();
 
@@ -30,6 +32,8 @@ app.use('/auth', authRouter);
 app.use('/events', eventRouter);
 
 // final error handlers
+
+app.use(errors());
 
 app.use(() => {
     throw new Error('Not found');

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import handleDuplicateErr from '../middlewares/mongooseDuplicate';
 
 const { Schema } = mongoose;
 
@@ -21,6 +22,8 @@ const UserSchema = Schema({
         type: Schema.Types.ObjectId, ref: 'Event'
     }]
 });
+
+UserSchema.post('save', handleDuplicateErr);
 
 const User = mongoose.model('User', UserSchema);
 

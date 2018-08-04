@@ -4,7 +4,7 @@ POST http://localhost:5000/auth/signup
 Content-Type: application/json
 
 {
-  "email": "admin@admin.com",
+  "email": "adm77in@admin.com",
   "password": "qwerty123",
   "username" : "Diana"
 }
@@ -16,8 +16,7 @@ Content-Type: application/json
 
 {
   "email": "admin@admin.com",
-  "password": "qwerty123",
-  "username" : "Diana"
+  "password": "qwerty123"
 }
 
 ### Logout
@@ -31,7 +30,7 @@ Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjY1N2FjZTFlZDRlNzBmYjIwNjMwZWMiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInVzZXJuYW1lIjoiRGlhbmEiLCJpYXQiOjE1MzMzNzcyMzcsImV4cCI6MTUzMzM5ODgzN30.afpiyPpCTkSjHEEE74aUwPTs_tv9XoP9axw_eHZaroo
 
 {
-  "start": 250,
+  "start": 500,
   "duration": 105,
   "title" : "Daily meeting4"
 }
