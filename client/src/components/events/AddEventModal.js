@@ -16,7 +16,7 @@ class AddModal extends React.Component {
         return (
             <div>
                 <Modal isOpen={isOpen} toggle={toggle} className={this.props.className}>
-                    <ModalHeader toggle={toggle}>Add</ModalHeader>
+                    <ModalHeader toggle={toggle}>Create new event</ModalHeader>
                     <ModalBody>
                         <AddForm onSubmit={addEvent} from={timeFrom} to={timeTo}/>
                     </ModalBody>

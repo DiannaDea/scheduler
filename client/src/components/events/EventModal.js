@@ -3,14 +3,14 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 class EventModal extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.deleteEvent = this.deleteEvent.bind(this);
     }
 
-    deleteEvent(){
+    deleteEvent() {
+        this.props.toggle();
         this.props.deleteEvent(this.props.eventId);
-        //this.props.toggle();
     }
 
     render() {
@@ -21,14 +21,19 @@ class EventModal extends React.Component {
         return (
             <div>
                 <Modal isOpen={isOpen} toggle={toggle} className={this.props.className}>
-                    <ModalHeader toggle={toggle}>Event information</ModalHeader>
+                    <ModalHeader toggle={toggle}>
+                        {
+                            (curEvent)
+                                ? curEvent.title
+                                : 'Event information'
+                        }
+                    </ModalHeader>
                     <ModalBody>
                         {
                             (curEvent)
                                 ? <React.Fragment>
-                                    <p><b>Title:</b> {curEvent.title}</p>
-                                    <p><b>Start:</b> {curEvent.start.toString()}</p>
-                                    <p><b>End:</b> {curEvent.end.toString()}</p>
+                                    <p><b>Start:</b> {curEvent.start.toLocaleString()}</p>
+                                    <p><b>End:</b> {curEvent.end.toLocaleString()}</p>
                                 </React.Fragment>
                                 : null
                         }

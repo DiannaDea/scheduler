@@ -15,8 +15,12 @@ let AddForm = (props) => {
 
     return (
         <React.Fragment>
-            <p>From: {from}</p>
-            <p>To: {to}</p>
+
+            <p><b>From:</b> {from}</p>
+            <p><b>To:</b> {to}</p>
+
+            <hr/>
+
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label for="title">Title</Label>
@@ -27,7 +31,6 @@ let AddForm = (props) => {
                         name="title"
                         placeholder="Title"/>
                 </FormGroup>
-                <hr/>
 
                 <FormGroup check row>
                     <Button color="info">Add</Button>

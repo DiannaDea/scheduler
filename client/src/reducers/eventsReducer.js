@@ -18,9 +18,11 @@ const addEvent = (events, event) => ({
     events: [...events, event]
 });
 
-const deleteEvent = (events, eventId) => ({
-    events: events.filter(event => event.id !== eventId)
-});
+const deleteEvent = (events, eventId) => {
+    return {
+        events: events.filter(event => event._id !== eventId)
+    }
+};
 
 export default (state = initialState, { payload, type }) => {
     switch (type) {

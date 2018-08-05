@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 
-
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-import EventModal from './eventModal';
+import EventModal from './EventModal';
 import AddModal from './AddEventModal';
 
 import {getEvents, deleteEvent, addEvent} from '../../actions/eventsActions';
@@ -18,8 +17,6 @@ const minDate = moment({hour: 8}).toDate();
 const maxDate = moment({hour: 17}).toDate();
 
 // TODO show last time label
-// TODO change color on select event
-// TODO close modal window on delete
 
 export default class Scheduler extends Component {
     constructor(props) {
@@ -45,7 +42,7 @@ export default class Scheduler extends Component {
     toggleModalEvent(event) {
         this.setState({
             eventInfoModal: !this.state.eventInfoModal,
-            currentEventId: event.id
+            currentEventId: (event) ? event.id : null
         });
     }
 
