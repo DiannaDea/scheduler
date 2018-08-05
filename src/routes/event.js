@@ -18,8 +18,9 @@ eventRouter.post('/',
     EventController.addValidation(),
     EventController.addEvent);
 
-eventRouter.get('/', EventController.getAllEvents);
+eventRouter.get('/json', EventController.importJSON);
 
+eventRouter.get('/', EventController.getAllEvents);
 
 eventRouter.delete('/:id',
     EventController.retrieveValidation(),

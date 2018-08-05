@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import { celebrate, Joi } from 'celebrate';
 
 import Event from '../models/Event';
@@ -101,6 +104,34 @@ export default class EventController {
                 });
         } catch (error) {
             return res.status(500).json({
+                message: error.message
+            });
+        }
+    }
+
+
+    static async importJSON(req, res) {
+        try {
+            const filename = path.join(__dirname, '../..', 'events.json');
+
+            const events = await Event
+                .find({ owner: req.userId })
+                .select('_id start duration title');
+
+            fs.writeFile(filename, JSON.stringify(events), (err) => {
+                if (err) {
+                    throw err;
+                }
+
+                res.attachment(filename).sendFile(filename, {}, (err) => {
+                    if (err) {
+                        throw err;
+                    }
+                    fs.unlink(filename);
+                });
+            });
+        } catch (error) {
+            return res.status(404).send({
                 message: error.message
             });
         }
