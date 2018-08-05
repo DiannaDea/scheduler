@@ -1,11 +1,14 @@
 import axios from 'axios';
-import {put, call} from 'redux-saga/effects';
 
+import {put, call} from 'redux-saga/effects';
 import {NotificationManager} from 'react-notifications';
 
 import {importJSONFailure, importJSONSuccess} from '../../actions/eventsActions';
+
 import {BASE_URL} from '../../constants/baseUrl';
 import {DOWNLOAD_ERROR_MSG, DOWNLOAD_SUCCESS_MSG} from '../../constants/messages';
+
+
 
 const handleFileDownload = (res) => {
     const url = window.URL.createObjectURL(new Blob([res.data]));
@@ -18,6 +21,7 @@ const handleFileDownload = (res) => {
 
     link.click();
 };
+
 
 export default function* addEvent({payload}) {
     try {
@@ -34,14 +38,13 @@ export default function* addEvent({payload}) {
         });
 
         handleFileDownload(res);
-
         NotificationManager.info('', DOWNLOAD_SUCCESS_MSG, 5000);
 
         yield put(importJSONSuccess());
 
-    } catch (error) {
-        NotificationManager.error(error.response.data.message, DOWNLOAD_ERROR_MSG, 5000);
+    } catch ({response}) {
+        NotificationManager.error(response.data.message, DOWNLOAD_ERROR_MSG, 5000);
 
-        yield put(importJSONFailure(error));
+        yield put(importJSONFailure(response.data.message, response.status));
     }
 }

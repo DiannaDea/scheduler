@@ -9,8 +9,10 @@ import {
     DELETE_EVENT_SUCCESS,
     DELETE_EVENT_FAILURE,
     IMPORT_JSON_REQUEST,
-    IMPORT_JSON_SUCCESS, IMPORT_JSON_FAILURE
+    IMPORT_JSON_SUCCESS,
+    IMPORT_JSON_FAILURE
 } from '../constants/actionTypes';
+
 
 export const getEvents = () => ({
     type: GET_EVENTS_REQUEST,
@@ -24,15 +26,12 @@ export const getEventsSuccess = events => ({
     }
 });
 
-export const getEventsFailure = ({ response }) => {
-    const { message } = response.data;
-    const { status } = response;
-
-    return {
-        type: GET_EVENTS_FAILURE,
-        payload: { message, status }
-    };
-};
+export const getEventsFailure = (message, status) => ({
+    type: GET_EVENTS_FAILURE,
+    payload: {
+        message, status
+    }
+});
 
 export const addEvent = (start, title, duration) => ({
     type: ADD_EVENT_REQUEST,
@@ -48,15 +47,12 @@ export const addEventSuccess = event => ({
     }
 });
 
-export const addEventFailure = ({ response }) => {
-    const { message } = response.data;
-    const { status } = response;
-
-    return {
-        type: ADD_EVENT_FAILURE,
-        payload: { message, status }
-    };
-};
+export const addEventFailure = (message, status) => ({
+    type: ADD_EVENT_FAILURE,
+    payload: {
+        message, status
+    }
+});
 
 export const deleteEvent = id => ({
     type: DELETE_EVENT_REQUEST,
@@ -72,32 +68,26 @@ export const deleteEventSuccess = id => ({
     }
 });
 
-export const deleteEventFailure = ({ response }) => {
-    const { message } = response.data;
-    const { status } = response;
+export const deleteEventFailure = (message, status) => ({
+    type: DELETE_EVENT_FAILURE,
+    payload: {
+        message, status
+    }
+});
 
-    return {
-        type: DELETE_EVENT_FAILURE,
-        payload: { message, status }
-    };
-};
-
-export const importJSON =  () => ({
+export const importJSON = () => ({
     type: IMPORT_JSON_REQUEST,
     payload: null
 });
 
-export const importJSONSuccess =  () => ({
+export const importJSONSuccess = () => ({
     type: IMPORT_JSON_SUCCESS,
     payload: null
 });
 
-export const importJSONFailure =  ({ response }) => {
-    const { message } = response.data;
-    const { status } = response;
-
-    return {
-        type: IMPORT_JSON_FAILURE,
-        payload: { message, status }
-    };
-};
+export const importJSONFailure = (message, status) => ({
+    type: IMPORT_JSON_FAILURE,
+    payload: {
+        message, status
+    }
+});

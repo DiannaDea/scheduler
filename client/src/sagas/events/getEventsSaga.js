@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { put, call } from 'redux-saga/effects';
+import {put, call} from 'redux-saga/effects';
 
-import { getEventsFailure, getEventsSuccess } from '../../actions/eventsActions';
-import { BASE_URL } from '../../constants/baseUrl';
+import {getEventsFailure, getEventsSuccess} from '../../actions/eventsActions';
+
+import {BASE_URL} from '../../constants/baseUrl';
 
 
-export default function* getEvents({ payload }) {
+export default function* getEvents({payload}) {
     try {
         const token = localStorage.getItem('token');
 
@@ -13,15 +14,15 @@ export default function* getEvents({ payload }) {
             url: `${BASE_URL}/events`,
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-type': 'application/json'
             }
         });
 
-        const  events  = res.data;
+        const events = res.data;
 
         yield put(getEventsSuccess(events));
-    } catch (error) {
-        yield put(getEventsFailure(error));
+    } catch ({response}) {
+        yield put(getEventsFailure(response.data.message, response.status));
     }
 }

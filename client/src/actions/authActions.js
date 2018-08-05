@@ -21,17 +21,12 @@ export const loginSuccess = token => ({
     }
 });
 
-export const loginFailure = ({response}) => {
-    const {message} = response.data;
-    const {status} = response;
-
-    return {
-        type: LOGIN_FAILURE,
-        payload: {
-            message, status
-        }
-    };
-};
+export const loginFailure = (message, status) => ({
+    type: LOGIN_FAILURE,
+    payload: {
+        message, status
+    }
+});
 
 export const logout = () => ({
     type: LOGOUT_REQUEST,
@@ -43,15 +38,11 @@ export const logoutSuccess = () => ({
     payload: null
 });
 
-
-export const logoutFailure = ({response}) => {
-    const {message} = response.data;
-    const {status} = response;
-
-
-    return {
-        type: LOGOUT_FAILURE,
-        payload: {message, status}
+export const logoutFailure = (message, status) => ({
+    type: LOGOUT_FAILURE,
+    payload: {
+        message, status
     }
-};
+});
+
 
