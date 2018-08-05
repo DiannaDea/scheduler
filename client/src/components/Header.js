@@ -15,8 +15,7 @@ import {Button} from 'reactstrap';
 
 import {importJSON} from '../actions/eventsActions';
 
-
-class Header extends Component {
+export default class Header extends Component {
     constructor(props) {
         super(props);
 
@@ -73,5 +72,3 @@ class Header extends Component {
         );
     }
 }
-
-export default Header;

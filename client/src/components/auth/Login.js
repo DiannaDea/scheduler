@@ -9,7 +9,6 @@ import {login} from '../../actions/authActions';
 
 
 class Login extends Component {
-
     handleLogin({email, password}) {
         this.props.dispatch(login(email, password));
     };
