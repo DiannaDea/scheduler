@@ -3,7 +3,7 @@
 1. git clone
 2. cd project directory
 3. npm i
-4. num run prod (started backend)
+4. npm run prod (started backend)
 5. cd client
 6. npm i
 7. npm start
