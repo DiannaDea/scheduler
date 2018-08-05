@@ -16,7 +16,7 @@ class Login extends Component {
     };
 
     render = () => {
-        const {token} = this.props;
+        const token = localStorage.getItem('token');
 
         if (token) {
             this.props.history.push('/schedule');

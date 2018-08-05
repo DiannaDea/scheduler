@@ -31,7 +31,7 @@ class Header extends Component {
         });
     }
 
-    downloadJSON(){
+    downloadJSON() {
         this.props.dispatch(importJSON());
     }
 
@@ -48,11 +48,7 @@ class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             {
-                                (!token) ?
-                                    (<NavItem>
-                                        <NavLink tag={Link} to='/signin'>Sign in</NavLink>
-                                    </NavItem>)
-                                    :
+                                (token) ?
                                     (
                                         <React.Fragment>
                                             <NavItem>
@@ -66,7 +62,7 @@ class Header extends Component {
                                             </NavItem>
                                         </React.Fragment>
 
-                                    )
+                                    ) : null
                             }
                         </Nav>
                     </Collapse>
