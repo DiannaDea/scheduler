@@ -16,3 +16,10 @@
 **!!!** You can create your own account via curl request to backend (see file **api.http**, first request)
 
 **!!!!** if you want to connect to your own DB, then specify DB credentials (host, port, db_name, username, password) in ./src/config.js
+
+
+UI/UX info:
+1. Click 'Download' to **download all events in JSON** format
+2. Click on event on calender to get some information about it
+3. Select some time perion on calender with the help of mouse to **create new event**
+4. Click 'Delete' on event info modal to **delete event**
