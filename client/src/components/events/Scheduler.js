@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 
-import EventModal from './eventModal';
 
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-import {getEvents} from '../../actions/eventsActions';
+import EventModal from './eventModal';
+import AddModal from './AddEventModal';
+
+import {getEvents, deleteEvent, addEvent} from '../../actions/eventsActions';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './customCalendar.css';
@@ -17,36 +19,71 @@ const maxDate = moment({hour: 17}).toDate();
 
 // TODO show last time label
 // TODO change color on select event
+// TODO close modal window on delete
 
 export default class Scheduler extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            modalEvent: false,
-            currentEventId : null
+            eventInfoModal: false,
+            addModal: false,
+            currentEventId: null,
+            timeFrom: null,
+            timeTo: null
         };
+
         this.toggleModalEvent = this.toggleModalEvent.bind(this);
+        this.toggleAddModal = this.toggleAddModal.bind(this);
+
+        this.deleteEvent = this.deleteEvent.bind(this);
+        this.addEvent = this.addEvent.bind(this);
 
         this.props.dispatch(getEvents());
     }
 
     toggleModalEvent(event) {
         this.setState({
-            modalEvent: !this.state.modalEvent,
+            eventInfoModal: !this.state.eventInfoModal,
             currentEventId: event.id
         });
     }
 
+    toggleAddModal(slotInfo) {
+        this.setState({
+            addModal: !this.state.addModal,
+            timeFrom: (slotInfo.start) ? slotInfo.start.toLocaleString() : null,
+            timeTo: (slotInfo.end) ? slotInfo.end.toLocaleString() : null
+        });
+    }
+
     transformEvents() {
-        return this.props.events.map(event => {
-            const {start, duration, title, _id} = event;
+        return this.props.events.map((event) => {
+            const {
+                start, duration, title, _id
+            } = event;
             return {
                 id: _id,
                 title,
                 start: moment({hour: 8}).add({minute: start}).toDate(),
                 end: moment({hour: 8}).add({minute: start + duration}).toDate()
-            }
-        })
+            };
+        });
+    }
+
+    deleteEvent(id) {
+        this.props.dispatch(deleteEvent(id));
+    }
+
+    addEvent(title){
+        const newStartDate = moment(this.state.timeFrom);
+        const newEndDate = moment(this.state.timeTo);
+
+        const start = newStartDate.diff(moment({hour: 8}), 'minutes');
+
+        const duration = newEndDate.diff(newStartDate, 'minutes');
+
+        this.props.dispatch(addEvent(start, title.title, duration));
     }
 
     render() {
@@ -56,7 +93,7 @@ export default class Scheduler extends Component {
             <div>
                 <BigCalendar
                     selectable
-                    onSelectEvent={(event) => this.toggleModalEvent(event)}
+                    onSelectEvent={event => this.toggleModalEvent(event)}
                     events={newEvents}
                     view="day"
                     views={['day']}
@@ -65,12 +102,21 @@ export default class Scheduler extends Component {
                     max={maxDate}
                     defaultDate={new Date()}
                     toolbar={false}
+                    onSelectSlot={(slotInfo) => this.toggleAddModal(slotInfo)}
                 />
                 <EventModal
-                    isOpen={this.state.modalEvent}
+                    isOpen={this.state.eventInfoModal}
                     toggle={this.toggleModalEvent}
                     eventId={this.state.currentEventId}
                     events={newEvents}
+                    deleteEvent={this.deleteEvent}
+                />
+                <AddModal
+                    isOpen={this.state.addModal}
+                    toggle={this.toggleAddModal}
+                    timeFrom={this.state.timeFrom}
+                    timeTo={this.state.timeTo}
+                    addEvent={this.addEvent}
                 />
             </div>
         );

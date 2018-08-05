@@ -11,7 +11,7 @@ export default function* deleteEvent({ payload }) {
 
         const res = yield call(axios, {
             url: `${BASE_URL}/events/${payload.id}`,
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-type': 'application/json'

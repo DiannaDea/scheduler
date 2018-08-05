@@ -3,6 +3,16 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 class EventModal extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.deleteEvent = this.deleteEvent.bind(this);
+    }
+
+    deleteEvent(){
+        this.props.deleteEvent(this.props.eventId);
+        //this.props.toggle();
+    }
+
     render() {
         const {isOpen, toggle, eventId, events} = this.props;
 
@@ -24,7 +34,7 @@ class EventModal extends React.Component {
                         }
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="danger" onClick={toggle}>Delete</Button>{' '}
+                        <Button color="danger" onClick={this.deleteEvent}>Delete</Button>{' '}
                         <Button color="secondary" onClick={toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
