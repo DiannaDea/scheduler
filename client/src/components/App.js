@@ -7,6 +7,7 @@ import Main from './Main';
 import Login from './auth/Login';
 import Logout from './auth/Logout';
 import Scheduler from '../containers/Scheduler';
+import {NotificationContainer} from 'react-notifications';
 
 const Body = () => (
     <React.Fragment>
@@ -21,6 +22,7 @@ const Body = () => (
 
 const App = () => (
     <React.Fragment>
+        <NotificationContainer/>
         <Header/>
         <Body/>
     </React.Fragment>

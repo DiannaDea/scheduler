@@ -14,3 +14,20 @@
 .rbc-today {
     background-color: white;
 }
+
+.rbc-event{
+    max-width: 255px;
+}
+
+.rbc-time-gutter.rbc-time-column{
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 200;
+}
+
+.rbc-timeslot-group:nth-child(even){
+    font-size: 14px;
+}
+
+.rbc-timeslot-group:nth-child(odd){
+    font-size: 16px;
+}

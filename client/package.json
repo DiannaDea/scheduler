@@ -10,6 +10,7 @@
     "react": "^16.4.2",
     "react-big-calendar": "^0.19.2",
     "react-dom": "^16.4.2",
+    "react-notifications": "^1.4.3",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

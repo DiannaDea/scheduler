@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { put, call } from 'redux-saga/effects';
 
+import {NotificationManager} from "react-notifications";
+
 import { deleteEventFailure, deleteEventSuccess } from '../../actions/eventsActions';
 import { BASE_URL } from '../../constants/baseUrl';
+import {DELETE_EVENT_ERROR_MSG, DELETE_EVENT_SUCCESS_MSG} from '../../constants/messages';
 
 
 export default function* deleteEvent({ payload }) {
@@ -18,9 +21,12 @@ export default function* deleteEvent({ payload }) {
             }
         });
 
+        NotificationManager.success('', DELETE_EVENT_SUCCESS_MSG, 5000);
 
         yield put(deleteEventSuccess(payload.id));
     } catch (error) {
+        NotificationManager.error(error.response.data.message, DELETE_EVENT_ERROR_MSG, 5000);
+
         yield put(deleteEventFailure(error));
     }
 }

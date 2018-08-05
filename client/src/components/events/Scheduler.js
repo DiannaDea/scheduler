@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {Container} from 'reactstrap'
+
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
@@ -14,9 +16,7 @@ import './customCalendar.css';
 BigCalendar.momentLocalizer(moment);
 
 const minDate = moment({hour: 8}).toDate();
-const maxDate = moment({hour: 17}).toDate();
-
-// TODO show last time label
+const maxDate = moment({hour: 17, minute: 1}).toDate();
 
 export default class Scheduler extends Component {
     constructor(props) {
@@ -49,8 +49,8 @@ export default class Scheduler extends Component {
     toggleAddModal(slotInfo) {
         this.setState({
             addModal: !this.state.addModal,
-            timeFrom: (slotInfo.start) ? slotInfo.start.toLocaleString() : null,
-            timeTo: (slotInfo.end) ? slotInfo.end.toLocaleString() : null
+            timeFrom: (slotInfo && slotInfo.start) ? slotInfo.start.toLocaleString() : null,
+            timeTo: (slotInfo && slotInfo.end) ? slotInfo.end.toLocaleString() : null
         });
     }
 
@@ -81,13 +81,15 @@ export default class Scheduler extends Component {
         const duration = newEndDate.diff(newStartDate, 'minutes');
 
         this.props.dispatch(addEvent(start, title.title, duration));
+        this.toggleAddModal();
+
     }
 
     render() {
         const newEvents = (this.props.events) ? this.transformEvents() : [];
 
         return (
-            <div>
+            <Container>
                 <BigCalendar
                     selectable
                     onSelectEvent={event => this.toggleModalEvent(event)}
@@ -115,7 +117,7 @@ export default class Scheduler extends Component {
                     timeTo={this.state.timeTo}
                     addEvent={this.addEvent}
                 />
-            </div>
+            </Container>
         );
     }
 }
