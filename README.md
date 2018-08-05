@@ -14,3 +14,5 @@
 **!!** Login credentials: email **admin@admin.com**, password **qwerty123**
 
 **!!!** You can create your own account via curl request to backend (see file **api.http**, first request)
+
+**!!!!** if you want to connect to your own DB, then specify DB credentials (host, port, db_name, username, password) in ./src/config.js
