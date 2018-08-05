@@ -1,0 +1,16 @@
+.rbc-event {
+    background-color: #E2ECF5;
+}
+
+.rbc-day-slot .rbc-event{
+    border: 0;
+    border-left: 2.5px solid #6E9ECF;
+    border-radius: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color:black;
+}
+
+.rbc-today {
+    background-color: white;
+}

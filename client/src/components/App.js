@@ -5,8 +5,8 @@ import {Switch, Route} from 'react-router-dom';
 import Header from '../containers/Header';
 import Main from './Main';
 import Login from './auth/Login';
-import Scheduler from './Scheduler';
-import Logout from './auth/Logout'
+import Logout from './auth/Logout';
+import Scheduler from '../containers/Scheduler';
 
 
 const Body = () => (
