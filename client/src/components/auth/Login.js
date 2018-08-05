@@ -9,16 +9,20 @@ import {login} from '../../actions/authActions';
 
 
 class Login extends Component {
+    constructor(props){
+        super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+
     handleLogin({email, password}) {
         this.props.dispatch(login(email, password));
     };
 
     render() {
         const token = localStorage.getItem('token');
-        (token)
-            ? this.props.history.push('/schedule')
-            : null;
-
+        if (token) {
+            this.props.history.push('/schedule')
+        }
         return (
             <Container>
                 <LoginForm onSubmit={this.handleLogin}/>
