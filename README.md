@@ -10,5 +10,7 @@
 8. open http://localhost:3000
 
 **!** API examples in project root directory, file **api.http**
+
 **!!** Login credentials: email **admin@admin.com**, password **qwerty123**
+
 **!!!** You can create your own account via curl request to backend (see file **api.http**, first request)
