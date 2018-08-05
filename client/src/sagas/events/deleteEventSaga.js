@@ -9,7 +9,7 @@ export default function* deleteEvent({ payload }) {
     try {
         const token = localStorage.getItem('token');
 
-        const res = yield call(axios, {
+        yield call(axios, {
             url: `${BASE_URL}/events/${payload.id}`,
             method: 'DELETE',
             headers: {

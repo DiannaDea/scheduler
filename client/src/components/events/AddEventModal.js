@@ -2,13 +2,9 @@ import React from 'react';
 
 import AddForm from './AddForm';
 
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 class AddModal extends React.Component {
-
-    constructor(props){
-        super(props);
-    }
 
     render() {
         const {isOpen, toggle, timeFrom, timeTo, addEvent} = this.props;

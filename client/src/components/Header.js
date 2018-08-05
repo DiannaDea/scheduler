@@ -9,6 +9,8 @@ import {
     NavLink
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {Button} from 'reactstrap';
+import {importJSON} from '../actions/eventsActions';
 
 
 class Header extends Component {
@@ -19,12 +21,18 @@ class Header extends Component {
         this.state = {
             isOpen: false
         };
+
+        this.downloadJSON = this.downloadJSON.bind(this);
     }
 
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    downloadJSON(){
+        this.props.dispatch(importJSON());
     }
 
     render() {
@@ -46,14 +54,17 @@ class Header extends Component {
                                     </NavItem>)
                                     :
                                     (
-                                       <React.Fragment>
-                                           <NavItem>
-                                               <NavLink tag={Link} to='/schedule'>Schedule</NavLink>
-                                           </NavItem>
-                                           <NavItem>
-                                               <NavLink tag={Link} to='/signout'>Logout</NavLink>
-                                           </NavItem>
-                                       </React.Fragment>
+                                        <React.Fragment>
+                                            <NavItem>
+                                                <NavLink tag={Link} to='/schedule'>Schedule</NavLink>
+                                            </NavItem>
+                                            <NavItem>
+                                                <NavLink tag={Link} to='/signout'>Logout</NavLink>
+                                            </NavItem>
+                                            <NavItem>
+                                                <Button onClick={this.downloadJSON} color="info">Download</Button>
+                                            </NavItem>
+                                        </React.Fragment>
 
                                     )
                             }

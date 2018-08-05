@@ -4,7 +4,12 @@ import {
     GET_EVENTS_FAILURE,
     ADD_EVENT_REQUEST,
     ADD_EVENT_SUCCESS,
-    ADD_EVENT_FAILURE, DELETE_EVENT_REQUEST, DELETE_EVENT_SUCCESS, DELETE_EVENT_FAILURE
+    ADD_EVENT_FAILURE,
+    DELETE_EVENT_REQUEST,
+    DELETE_EVENT_SUCCESS,
+    DELETE_EVENT_FAILURE,
+    IMPORT_JSON_REQUEST,
+    IMPORT_JSON_SUCCESS, IMPORT_JSON_FAILURE
 } from '../constants/actionTypes';
 
 export const getEvents = () => ({
@@ -73,6 +78,26 @@ export const deleteEventFailure = ({ response }) => {
 
     return {
         type: DELETE_EVENT_FAILURE,
+        payload: { message, status }
+    };
+};
+
+export const importJSON =  () => ({
+    type: IMPORT_JSON_REQUEST,
+    payload: null
+});
+
+export const importJSONSuccess =  () => ({
+    type: IMPORT_JSON_SUCCESS,
+    payload: null
+});
+
+export const importJSONFailure =  ({ response }) => {
+    const { message } = response.data;
+    const { status } = response;
+
+    return {
+        type: IMPORT_JSON_FAILURE,
         payload: { message, status }
     };
 };

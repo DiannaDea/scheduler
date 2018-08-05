@@ -8,7 +8,6 @@ import Login from './auth/Login';
 import Logout from './auth/Logout';
 import Scheduler from '../containers/Scheduler';
 
-
 const Body = () => (
     <React.Fragment>
         <Switch>
