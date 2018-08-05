@@ -2,7 +2,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    LOGOUT
+    LOGOUT_REQUEST,
+    LOGOUT_FAILURE,
+    LOGOUT_SUCCESS
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -13,7 +15,10 @@ const initialState = {
 export default (state = initialState, { payload, type }) => {
     switch (type) {
         case LOGIN_REQUEST:
-            return { ...state, isFetching: true };
+            return {
+                ...state,
+                isFetching: true
+            };
         case LOGIN_SUCCESS:
             return {
                 ...state,
@@ -28,8 +33,23 @@ export default (state = initialState, { payload, type }) => {
                 error: payload,
                 data : {}
             };
-        case LOGOUT:
-            return { ...state };
+        case LOGOUT_REQUEST:
+            return {
+                ...state,
+                isFetching: true
+            };
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                data : {}
+            };
+        case LOGOUT_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error : payload
+            };
         default:
             return state;
     }

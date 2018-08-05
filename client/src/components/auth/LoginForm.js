@@ -1,36 +1,50 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
-import {Link} from 'react-router-dom';
-
-import {Input, Form, FormGroup, Button, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
+import {
+    Input,
+    Form,
+    FormGroup,
+    Button,
+    Label
+} from 'reactstrap';
 
 
 let LoginForm = (props) => {
     const {handleSubmit} = props;
+
     return (
         <React.Fragment>
             <Form onSubmit={handleSubmit}>
 
                 <h2>Sign In</h2>
-                <p>Please fill in this form to login to your account!</p>
+
                 <hr/>
 
-
-                <InputGroup>
-                    <Input tag={Field} type="email" component="input" name="email" placeholder="Email Address"/>
-                </InputGroup>
-
-                <InputGroup>
-                    <Input tag={Field} type="password" component="input" name="password" placeholder="Password"/>
-                </InputGroup>
-
+                <FormGroup>
+                    <Label for="exampleEmail">Email</Label>
+                    <Input
+                        tag={Field}
+                        type="email"
+                        component="input"
+                        name="email"
+                        placeholder="Email Address"/>
+                </FormGroup>
 
                 <FormGroup>
-                    <div className="text-center">Don't have an account? <Link to='/register'>Sign up here</Link></div>
-                </FormGroup>
+                    <Label for="examplePassword">Password</Label>
+                    <Input
+                        tag={Field}
+                        type="password"
+                        component="input"
+                        name="password"
+                        placeholder="Password"/>
+                    </FormGroup>
+
+                <hr/>
+
                 <FormGroup check row>
-                    <Button>Sign In</Button>
+                    <Button color="info">Sign in</Button>
                 </FormGroup>
             </Form>
         </React.Fragment>

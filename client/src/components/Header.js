@@ -28,6 +28,8 @@ class Header extends Component {
     }
 
     render() {
+        const token = localStorage.getItem('token');
+
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -37,16 +39,24 @@ class Header extends Component {
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink tag={Link} to="/signin">
-                                    Sign in
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} to="/signup">
-                                    Sign up
-                                </NavLink>
-                            </NavItem>
+                            {
+                                (!token) ?
+                                    (<NavItem>
+                                        <NavLink tag={Link} to='/signin'>Sign in</NavLink>
+                                    </NavItem>)
+                                    :
+                                    (
+                                       <React.Fragment>
+                                           <NavItem>
+                                               <NavLink tag={Link} to='/schedule'>Schedule</NavLink>
+                                           </NavItem>
+                                           <NavItem>
+                                               <NavLink tag={Link} to='/signout'>Logout</NavLink>
+                                           </NavItem>
+                                       </React.Fragment>
+
+                                    )
+                            }
                         </Nav>
                     </Collapse>
                 </Navbar>

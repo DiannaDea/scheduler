@@ -1,30 +1,33 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router'
 
-import {Redirect} from 'react-router-dom';
+import {Container} from 'reactstrap';
 
 import LoginForm from './LoginForm';
-import {login} from '../../actions/loginActions';
+
+import {login} from '../../actions/authActions';
 
 
 class Login extends Component {
 
     handleLogin = ({email, password}) => {
-        this.props.dispatch(login(email, password, this.props.history));
+        this.props.dispatch(login(email, password));
     };
 
     render = () => {
         const {token} = this.props;
+
         if (token) {
-            return <Redirect to="/account"/>;
+            this.props.history.push('/schedule');
         }
+
         return (
-            <div className="form-container">
-                <div className="auth-form">
-                    <LoginForm onSubmit={this.handleLogin}/>
-                </div>
-            </div>
+            <Container>
+                <LoginForm onSubmit={this.handleLogin}/>
+            </Container>
         );
     }
 }
 
-export default Login;
+export default withRouter(connect(() => {})(Login))
