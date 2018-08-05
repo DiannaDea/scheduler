@@ -116,7 +116,7 @@ export default class EventController {
 
             const events = await Event
                 .find({ owner: req.userId })
-                .select('_id start duration title');
+                .select('start duration title');
 
             fs.writeFile(filename, JSON.stringify(events), (err) => {
                 if (err) {
