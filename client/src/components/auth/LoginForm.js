@@ -16,13 +16,10 @@ let LoginForm = (props) => {
     return (
         <React.Fragment>
             <Form onSubmit={handleSubmit}>
-
                 <h2>Sign In</h2>
-
                 <hr/>
-
                 <FormGroup>
-                    <Label for="exampleEmail">Email</Label>
+                    <Label for="email">Email</Label>
                     <Input
                         tag={Field}
                         type="email"
@@ -30,9 +27,8 @@ let LoginForm = (props) => {
                         name="email"
                         placeholder="Email Address"/>
                 </FormGroup>
-
                 <FormGroup>
-                    <Label for="examplePassword">Password</Label>
+                    <Label for="password">Password</Label>
                     <Input
                         tag={Field}
                         type="password"
@@ -40,9 +36,7 @@ let LoginForm = (props) => {
                         name="password"
                         placeholder="Password"/>
                     </FormGroup>
-
                 <hr/>
-
                 <FormGroup check row>
                     <Button color="info">Sign in</Button>
                 </FormGroup>
@@ -55,4 +49,5 @@ let LoginForm = (props) => {
 LoginForm = reduxForm({
     form: 'login'
 })(LoginForm);
+
 export default LoginForm;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import {
     Collapse,
     Navbar,
@@ -8,8 +9,10 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
+
 import {Link} from 'react-router-dom';
 import {Button} from 'reactstrap';
+
 import {importJSON} from '../actions/eventsActions';
 
 
@@ -21,7 +24,6 @@ class Header extends Component {
         this.state = {
             isOpen: false
         };
-
         this.downloadJSON = this.downloadJSON.bind(this);
     }
 
@@ -37,7 +39,6 @@ class Header extends Component {
 
     render() {
         const token = localStorage.getItem('token');
-
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -62,7 +63,8 @@ class Header extends Component {
                                             </NavItem>
                                         </React.Fragment>
 
-                                    ) : null
+                                    )
+                                    : null
                             }
                         </Nav>
                     </Collapse>

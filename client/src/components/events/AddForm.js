@@ -12,15 +12,11 @@ import {
 
 let AddForm = (props) => {
     const {handleSubmit, from ,to} = props;
-
     return (
         <React.Fragment>
-
             <p><b>From:</b> {from}</p>
             <p><b>To:</b> {to}</p>
-
             <hr/>
-
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label for="title">Title</Label>
@@ -44,4 +40,5 @@ let AddForm = (props) => {
 AddForm = reduxForm({
     form: 'addEvent'
 })(AddForm);
+
 export default AddForm;

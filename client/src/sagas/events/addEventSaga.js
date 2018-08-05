@@ -30,7 +30,6 @@ export default function* addEvent({ payload }) {
 
     } catch ({response}) {
         NotificationManager.error(response.data.message, ADD_EVENT_ERROR_MSG, 5000);
-
         yield put(addEventFailure(response.data.message, response.status));
     }
 }

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 
-import {Container} from 'reactstrap'
-
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import {Container} from 'reactstrap'
 
 import EventModal from './EventModal';
 import AddModal from './AddEventModal';
@@ -49,8 +48,14 @@ export default class Scheduler extends Component {
     toggleAddModal(slotInfo) {
         this.setState({
             addModal: !this.state.addModal,
-            timeFrom: (slotInfo && slotInfo.start) ? slotInfo.start.toLocaleString() : null,
-            timeTo: (slotInfo && slotInfo.end) ? slotInfo.end.toLocaleString() : null
+            timeFrom:
+                (slotInfo && slotInfo.start)
+                    ? slotInfo.start.toLocaleString()
+                    : null,
+            timeTo:
+                (slotInfo && slotInfo.end)
+                    ? slotInfo.end.toLocaleString()
+                    : null
         });
     }
 
@@ -72,7 +77,7 @@ export default class Scheduler extends Component {
         this.props.dispatch(deleteEvent(id));
     }
 
-    addEvent(title){
+    addEvent(title) {
         const newStartDate = moment(this.state.timeFrom);
         const newEndDate = moment(this.state.timeTo);
 
@@ -87,7 +92,6 @@ export default class Scheduler extends Component {
 
     render() {
         const newEvents = (this.props.events) ? this.transformEvents() : [];
-
         return (
             <Container>
                 <BigCalendar

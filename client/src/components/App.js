@@ -1,12 +1,13 @@
 import React from 'react';
 
 import {Switch, Route} from 'react-router-dom';
+import {NotificationContainer} from 'react-notifications';
 
 import Header from '../containers/Header';
 import Login from './auth/Login';
 import Logout from './auth/Logout';
 import Scheduler from '../containers/Scheduler';
-import {NotificationContainer} from 'react-notifications';
+
 
 const Body = () => (
     <React.Fragment>

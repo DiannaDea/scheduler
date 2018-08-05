@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
+
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
-class EventModal extends React.Component {
-
+export default class EventModal extends Component {
     constructor(props) {
         super(props);
         this.deleteEvent = this.deleteEvent.bind(this);
@@ -15,9 +15,7 @@ class EventModal extends React.Component {
 
     render() {
         const {isOpen, toggle, eventId, events} = this.props;
-
         const curEvent = events.filter(event => event.id === eventId)[0];
-
         return (
             <div>
                 <Modal isOpen={isOpen} toggle={toggle} className={this.props.className}>
@@ -47,5 +45,3 @@ class EventModal extends React.Component {
         );
     }
 }
-
-export default EventModal;

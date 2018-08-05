@@ -30,7 +30,6 @@ export default function* deleteEvent({ payload }) {
         yield put(deleteEventSuccess(payload.id));
     } catch ({response}) {
         NotificationManager.error(response.data.message, DELETE_EVENT_ERROR_MSG, 5000);
-
         yield put(deleteEventFailure(response.data.message, response.status));
     }
 }

@@ -1,5 +1,6 @@
 .rbc-event {
     background-color: #E2ECF5;
+    max-width: 200px;
 }
 
 .rbc-time-content{
@@ -16,10 +17,6 @@
 
 .rbc-today {
     background-color: white;
-}
-
-.rbc-event{
-    max-width: 200px;
 }
 
 .rbc-time-gutter.rbc-time-column{

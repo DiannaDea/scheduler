@@ -1,14 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 import AddForm from './AddForm';
 
-import {Modal, ModalHeader, ModalBody} from 'reactstrap';
-
-class AddModal extends React.Component {
-
+export default class AddModal extends Component {
     render() {
         const {isOpen, toggle, timeFrom, timeTo, addEvent} = this.props;
-
         return (
             <div>
                 <Modal isOpen={isOpen} toggle={toggle} className={this.props.className}>
@@ -21,5 +18,3 @@ class AddModal extends React.Component {
         );
     }
 }
-
-export default AddModal;
