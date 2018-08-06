@@ -9,13 +9,16 @@
 7. npm start
 8. open http://localhost:3000
 
-**!** API examples in project root directory, file **api.http**
 
-**!!** Login credentials: email **admin@admin.com**, password **qwerty123**
+**!** CLEAR LOCALSTORAGE BEFORE USING THIS APPLICATION
 
-**!!!** You can create your own account via curl request to backend (see file **api.http**, first request)
+**!!** API examples in project root directory, file **api.http**
 
-**!!!!** if you want to connect to your own DB, then specify DB credentials (host, port, db_name, username, password) in ./src/config.js
+**!!!** Login credentials: email **admin@admin.com**, password **qwerty123**
+
+**!!!!** You can create your own account via curl request to backend (see file **api.http**, first request)
+
+**!!!!!** if you want to connect to your own DB, then specify DB credentials (host, port, db_name, username, password) in ./src/config.js
 
 
 UI/UX info:
